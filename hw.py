@@ -33,10 +33,15 @@ nth_fibonacci(9) -> 21
 
 def nth_fibonacci(n: int) -> int:
     # Initialize the first two Fibonacci numbers
-    a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
-    return a
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        a, b = 0, 1
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        return b
 
 
 """
@@ -87,7 +92,7 @@ sum_of_digits(98765) -> 35
 
 def sum_of_digits(n: int) -> int:
     # Sum the digits of the number
-    return sum(int(digit) for digit in str(n))
+    return sum(int(digit) for digit in str(abs(n)))
 
 
 """
@@ -243,6 +248,8 @@ lcm(6, 8) -> 24
 
 def lcm(a: int, b: int) -> int:
     # Calculate LCM using GCD
+    if a == 0 or b == 0:
+        return 0
     return abs(a * b) // gcd(a, b)
 
 
